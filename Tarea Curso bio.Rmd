@@ -12,20 +12,74 @@ La entrega debe contener los códigos para obtener las siguientes figuras:
 Códigos: Primer ejercicio
 
 
-
 ```{r cars}
 library(ggpubr)
 ```
-## Loading required package: ggplot2
+### **Loading required package: ggplot2**
+
+
+```{r cars}
+
+data (mtcars)
+mtcars$name = rownames(mtcars)
+mtcars$cyl = as.factor(mtcars$cyl)
+
+#*Imag1 (barplot)*
+p1 = ggbarplot(mtcars, x = "name", y = "mpg", fill = "cyl", color = "white", palette = "jco", sort.val = "asc", sort.by.groups = TRUE, x.text.angle = 90) + font("x.text", size = 8)
+
+#*Imag2 (scatterplot)*
+p2 = ggscatter(mtcars, x = "wt", y = "mpg", add = "reg.line", conf.int = TRUE, color = "cyl", palette = "jco", shape = "cyl") + stat_cor(aes(color = cyl), label.x.npc = "centre", label.y.npc = "top")
+
+#*Imag3 (densityplot)*
+p3 = ggplot(diamonds, aes(depth, fill = cut, colour = cut)) + geom_density(alpha = 0.2, na.rm = TRUE) + xlim(58, 68) + theme_classic() + theme(legend.position = "bottom")
+
+#*Imag4 (raster)*
+p4 = ggplot(faithfuld, aes(eruptions, waiting)) + geom_raster(aes(fill = density)) + theme_classic() + scale_fill_gradientn(colours = heat.colors(10, rev = TRUE), na.value = "white")
+
+#*Imag5 (dotplot)*
+p5 = ggdotplot(ToothGrowth, x = "dose", y = "len", color = "dose", palette = "npg", binwidth = 1) + theme_classic()
+
+set.seed(42)
+n = 1000
+x = runif(n) * 3
+y = x * sin(1/x) + rnorm(n)/25
+
+df = data.frame(x = x, y = y)
+
+#*Imag 6*
+p6 = ggplot(df, aes(x, y)) + geom_point(alpha = 0.3, col = "navyblue") + geom_smooth(se = FALSE) + scale_x_continuous(limits = c(0, 0.5)) + scale_y_continuous(limits = c(-0.3, 0.4)) + theme_bw()
+
+multi1 = ggarrange(p1,
+                   ggarrange(p3,
+                             ggarrange(p6, p5, p2, p4, nrow = 2, ncol = 2, labels = c("B","C","D","E")), ncol = 2, labels = "F"),
+                   nrow = 2, labels = "A")
 
 
 
 
+```
+### **`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'**
+
+### **Warning: Removed 819 rows containing non-finite values (`stat_smooth()`)**
+
+### **Warning: Removed 819 rows containing missing values (`geom_point()`)**
+
+### **Warning: Removed 1 rows containing missing values (`geom_smooth()`)**
+
+### **geom_smooth()` using formula = 'y ~ x'**
+
+```{r cars}
+
+ggsave(filename = "multi1.pdf", 
+       height = 14, 
+       width = 14, 
+       plot = multi1, 
+       device = cairo_pdf, 
+       bg = "red",
+       dpi = 300)
+
+multi1
 
 
-
-```{r pressure, echo=FALSE}
-plot(pressure)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
