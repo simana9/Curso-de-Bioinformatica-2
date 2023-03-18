@@ -1,0 +1,31 @@
+---
+title: "Tarea de Bioinformatica"
+author: "Silvana Morocho"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+Utilice un documento tipo .Rmd o .qmd y genere un informe html. Estos dos documentos (Rmd y html) guardalos con control de cambios en un repositorio de GitHub y pegan solo el enlace del repositorio en esta entrega.
+
+La entrega debe contener los códigos para obtener las siguientes figuras:
+
+Códigos: Primer ejercicio
+
+
+
+```{r cars}
+library(ggpubr)
+```
+## Loading required package: ggplot2
+
+
+
+
+
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
