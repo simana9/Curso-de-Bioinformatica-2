@@ -7,36 +7,66 @@ La entrega debe contener los códigos para obtener las  figuras
 
 ## Informacion del Sistema de Computador 
 Host Name:                 DESKTOP-9LGLVD0
+
 OS Name:                   Microsoft Windows 10 Pro
+
 OS Version:                10.0.19045 N/A Build 19045
+
 OS Manufacturer:           Microsoft Corporation
+
 OS Configuration:          Standalone Workstation
+
 OS Build Type:             Multiprocessor Free
+
 Registered Owner:          User
+
 Registered Organization:   Razer
+
 Product ID:                00331-20090-00000-AA902
+
 Original Install Date:     27/08/2021, 17:47:04
+
 System Boot Time:          27/03/2023, 11:36:21
+
 System Manufacturer:       Razer
+
 System Model:              Razer Blade Stealth 13 Late 2019
+
 System Type:               x64-based PC
+
 Processor(s):              1 Processor(s) Installed.
+
                            [01]: Intel64 Family 6 Model 126 Stepping 5 GenuineIntel ~1501 Mhz
 BIOS Version:              Razer 1.02, 10/09/2019
 Windows Directory:         C:\WINDOWS
+
 System Directory:          C:\WINDOWS\system32
+
 Boot Device:               \Device\HarddiskVolume2
+
 System Locale:             en-us;English (United States)
+
 Input Locale:              en-us;English (United States)
+
 Time Zone:                 (UTC-05:00) Bogota, Lima, Quito, Rio Branco
+
+
 Total Physical Memory:     16.208 MB
+
 Available Physical Memory: 4.044 MB
+
 Virtual Memory: Max Size:  22.848 MB
+
 Virtual Memory: Available: 3.891 MB
+
 Virtual Memory: In Use:    18.957 MB
+
 Page File Location(s):     C:\pagefile.sys
+
 Domain:                    WORKGROUP
+
 Logon Server:              \\DESKTOP-9LGLVD0
+
 Hotfix(s):                 18 Hotfix(s) Installed.
                            [01]: KB5022502
                            [02]: KB5000736
@@ -86,3 +116,11 @@ svn rev        82513
 language       R                                
 version.string R version 4.2.1 (2022-06-23 ucrt)
 nickname       Funny-Looking Kid 
+## Librerias
+biblioteca (readr)
+biblioteca (RCurl)
+biblioteca (ggplot2)
+biblioteca (dplyr)
+biblioteca (ggpubr)
+biblioteca (conjuntos de datos)
+biblioteca (gridExtra)
