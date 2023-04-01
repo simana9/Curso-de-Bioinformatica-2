@@ -12,14 +12,11 @@ La entrega debe contener los códigos para obtener las siguientes figuras:
 Códigos: Primer ejercicio
 
 
-```{r cars}
-# Instalar
-library(ggpubr)
-```
+
 ### **Loading required package: ggplot2**
 
-
 ```{r cars}
+
 # Variable categorica y no numerica 
 data (mtcars)
 mtcars$name = rownames(mtcars)
