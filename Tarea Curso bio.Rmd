@@ -12,14 +12,12 @@ La entrega debe contener los códigos para obtener las siguientes figuras:
 Códigos: Primer ejercicio
 
 
-```{r cars}
-library(ggpubr)
-```
+
 ### **Loading required package: ggplot2**
 
-
 ```{r cars}
 
+# Variable categorica y no numerica 
 data (mtcars)
 mtcars$name = rownames(mtcars)
 mtcars$cyl = as.factor(mtcars$cyl)
@@ -47,6 +45,8 @@ y = x * sin(1/x) + rnorm(n)/25
 df = data.frame(x = x, y = y)
 
 #*Imag 6*
+
+
 p6 = ggplot(df, aes(x, y)) + geom_point(alpha = 0.3, col = "navyblue") + geom_smooth(se = FALSE) + scale_x_continuous(limits = c(0, 0.5)) + scale_y_continuous(limits = c(-0.3, 0.4)) + theme_bw()
 
 multi1 = ggarrange(p1,
@@ -82,4 +82,122 @@ multi1
 
 
 ```
+
+Codigos: Segundo Ejercicio 
+
+
+```{r cars}
+# Librerias
+install.packages("gapminder")
+library(gapminder)
+
+library(dplyr)
+library(ggplot2)
+library(grid)
+library(gridExtra)
+library(ggrepel)
+
+
+# Cargar Data
+ruta <- "https://raw.githubusercontent.com/simana9/Curso-de-Bioinformatica-2/bea5c1c054256982acdd34d28bd633bdd17c6aab/gapminder.csv"
+df_gapminder <- read.csv(file = ruta, sep = ',', header = TRUE)
+
+# Grafico con todos los paises
+
+dfp1 <- df_gapminder %>%
+  filter(year == 2007)
+ggplot(dfp1, aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+  geom_point() +
+  labs(x = "Ingreso promedio (USD)", y = "Expectativa de vida al nacer", title = "Esperanza de vida por el ingreso en 2007",
+       caption = "Fuente: gapminder", color = "Continent: ") +
+  theme(legend.position = "bottom", legend.title = element_text(face = "bold", color = "brown", size = 8),
+        panel.background = element_rect(fill = "lightblue1", colour = "brown3"), 
+        panel.grid.major = element_line(colour = "blue", linetype = "dotted"))
+
+# Ciertos paises 
+dfp2 = ggplot(df_gapminder, aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+  geom_point() +
+  geom_text_repel(aes(label = country), size = 1.5) +
+  scale_x_continuous(limits = c(3000, 5000)) +
+  scale_y_continuous(limits = c(70, 80)) +
+  guides(size = FALSE) +
+  theme(legend.position = "null", axis.title = element_blank(),
+        legend.title = element_text(face = "bold", color = "black", size = 8),
+        panel.background = element_rect(fill = "lightblue1", colour = "brown2"), 
+        panel.grid.major = element_line(colour = "brown3", linetype = "dotted"))
+
+embeb = dfp1 + annotation_custom(ggplotGrob(dfp2),
+                                 xmin = 30000, xmax = 50000,
+                                 ymin = 40, ymax = 70)
+embeb
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
