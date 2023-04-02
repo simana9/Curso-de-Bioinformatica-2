@@ -88,7 +88,6 @@ Codigos: Segundo Ejercicio
 
 
 ```{r cars}
-
 # Librerias
 install.packages("gapminder")
 library(gapminder)
@@ -99,63 +98,39 @@ library(grid)
 library(gridExtra)
 library(ggrepel)
 
-library(readr)
-library(RCurl)
-library(ggpubr)
-library(datasets)
 
-library(gapminder)
-df_gapminder <- gapminder
-
-library(dplyr)
-df_filtered <- df_gapminder %>% filter(year == 2007)
-
-
-
-#Cargar Data
-
-# Grafico con todos los paises
-
-
+# Cargar Data
 ruta <- "https://raw.githubusercontent.com/simana9/Curso-de-Bioinformatica-2/bea5c1c054256982acdd34d28bd633bdd17c6aab/gapminder.csv"
 df_gapminder <- read.csv(file = ruta, sep = ',', header = TRUE)
 
 # Grafico con todos los paises
-dfp1 <- df_gapminder %>%
-    filter(year == 2007)
-   df_gapminder %>% filter(df_gapminder$year == 2007)
-df_gapminder %>% with(filter(year == 2007))
-  ggplot(aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) + geom_point() +
-  labs(x = "Ingreso promedio (USD)", y = "Expectativa de vida al nacer", title="Esperanza de vida por el ingreso en 2007",
-       caption="Fuente: gapminder",color="Continent: ") +
-  theme(legend.position="bottom", legend.title = element_text(face = "bold", color = "brown", size= 8),panel.background = element_rect(fill = "lightblue1", colour = "brown3"), panel.grid.major = element_line(colour = "blue", linetype = "dotted"))
 
-dfp1
+dfp1 <- df_gapminder %>%
+  filter(year == 2007)
+ggplot(dfp1, aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+  geom_point() +
+  labs(x = "Ingreso promedio (USD)", y = "Expectativa de vida al nacer", title = "Esperanza de vida por el ingreso en 2007",
+       caption = "Fuente: gapminder", color = "Continent: ") +
+  theme(legend.position = "bottom", legend.title = element_text(face = "bold", color = "brown", size = 8),
+        panel.background = element_rect(fill = "lightblue1", colour = "brown3"), 
+        panel.grid.major = element_line(colour = "blue", linetype = "dotted"))
 
 # Ciertos paises 
-
-dfp2 = ggplot(df_gapminder, aes(x = gdpPercap, y = lifeExp,
-size=pop, color=continent)) +
-geom_point() +
-geom_text_repel(aes(label=country), size = 1.5) +
-scale_x_continuous(limits = c(3000, 5000)) +
-scale_y_continuous(limits = c(70, 80)) +
-guides(size=FALSE) +
-theme(legend.position = "null",
-axis.title = element_blank(),
-legend.title = element_text(face = "bold", color = "black", size= 8),
-panel.background = element_rect(fill = "lightblue1", colour = "brown2"),
-panel.grid.major = element_line(colour = "brown3", linetype = "dotted"))
-
-dfp2
-
+dfp2 = ggplot(df_gapminder, aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+  geom_point() +
+  geom_text_repel(aes(label = country), size = 1.5) +
+  scale_x_continuous(limits = c(3000, 5000)) +
+  scale_y_continuous(limits = c(70, 80)) +
+  guides(size = FALSE) +
+  theme(legend.position = "null", axis.title = element_blank(),
+        legend.title = element_text(face = "bold", color = "black", size = 8),
+        panel.background = element_rect(fill = "lightblue1", colour = "brown2"), 
+        panel.grid.major = element_line(colour = "brown3", linetype = "dotted"))
 
 embeb = dfp1 + annotation_custom(ggplotGrob(dfp2),
-xmin = 30000, xmax = 50000,
-ymin = 40, ymax = 70)
-
+                                 xmin = 30000, xmax = 50000,
+                                 ymin = 40, ymax = 70)
 embeb
-
 
 ```
 
