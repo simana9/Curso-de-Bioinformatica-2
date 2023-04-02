@@ -90,6 +90,9 @@ Codigos: Segundo Ejercicio
 ```{r cars}
 
 # Librerias
+install.packages("gapminder")
+library(gapminder)
+
 library(dplyr)
 library(ggplot2)
 library(grid)
@@ -101,6 +104,13 @@ library(RCurl)
 library(ggpubr)
 library(datasets)
 
+library(gapminder)
+df_gapminder <- gapminder
+
+library(dplyr)
+df_filtered <- df_gapminder %>% filter(year == 2007)
+
+
 
 #Cargar Data
 
@@ -111,14 +121,13 @@ ruta <- "https://raw.githubusercontent.com/simana9/Curso-de-Bioinformatica-2/bea
 df_gapminder <- read.csv(file = ruta, sep = ',', header = TRUE)
 
 # Grafico con todos los paises
-
 dfp1 <- df_gapminder %>%
-  df_gapminder %>% filter(year == 2007) %>% 
+    filter(year == 2007)
+   df_gapminder %>% filter(df_gapminder$year == 2007)
+df_gapminder %>% with(filter(year == 2007))
   ggplot(aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) + geom_point() +
-  
   labs(x = "Ingreso promedio (USD)", y = "Expectativa de vida al nacer", title="Esperanza de vida por el ingreso en 2007",
        caption="Fuente: gapminder",color="Continent: ") +
-  
   theme(legend.position="bottom", legend.title = element_text(face = "bold", color = "brown", size= 8),panel.background = element_rect(fill = "lightblue1", colour = "brown3"), panel.grid.major = element_line(colour = "blue", linetype = "dotted"))
 
 dfp1
