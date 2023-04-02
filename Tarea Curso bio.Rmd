@@ -86,7 +86,6 @@ multi1
 Codigos: Segundo Ejercicio 
 
 
-
 ```{r cars}
 # Librerias
 install.packages("gapminder")
